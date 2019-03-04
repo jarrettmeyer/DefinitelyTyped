@@ -337,6 +337,18 @@ export interface SankeyLayout<Data, N extends SankeyExtraProperties, L extends S
      * @param iterations Number of relaxation iterations, which defaults to 32.
      */
     iterations(iterations: number): this;
+
+    /**
+     * Return the current node sort method, which defaults to undefined.
+     */
+    nodeSort(): ((nodeA: SankeyNode<N, L>, nodeB: SankeyNode<N, L>) => number) | undefined;
+    /**
+     * Set the node sort method to the specified function and return this Sankey layout generator.
+     *
+     * @param nodeSort A node sort function which is evaluated for each input node in order.
+     * If no value is given, defaults to undefined, allowing the layout to determine node sort order.
+     */
+    nodeSort(sort: (nodeA: SankeyNode<N, L>, nodeB: SankeyNode<N, L>) => number): this;
 }
 
 /**
